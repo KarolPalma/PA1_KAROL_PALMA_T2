@@ -1,0 +1,18 @@
+select * from UTH.TBL_VEHICULOS;
+
+INSERT INTO TBL_VEHICULOS(PLACA, MODELO, MARCA, ANIO, MOTOR, PRECIO, NOMBRE, DESCRIPCION, IMAGEN)
+VALUES ('PDP01','BMW01', 'BMW', 2018, '2.0', 200000, 'FAST 1', 'Vehiculo comprado en agencia, poco uso con 90 mil millas.', '/bd/bmw.jpg');
+
+INSERT INTO TBL_VEHICULOS(PLACA, MODELO, MARCA, ANIO, MOTOR, PRECIO, NOMBRE, DESCRIPCION, IMAGEN)
+VALUES ('PHD02','Tacoma', 'Toyota', 2014, '2.0', 400000, 'Toy 1', 'Vehiculo de segunda, con 400 mil millas.', '/bd/toy.jpg');
+
+INSERT INTO TBL_VEHICULOS(PLACA, MODELO, MARCA, ANIO, MOTOR, PRECIO, NOMBRE, DESCRIPCION, IMAGEN)
+VALUES ('PDZ90','Sorento', 'Kia', 2012, '2.0', 300000, 'Sor 1', 'Vehiculo comprado en agencia, poco uso con 20 mil millas.', '/bd/ksorento.jpg');
+
+INSERT INTO TBL_VEHICULOS(PLACA, MODELO, MARCA, ANIO, MOTOR, PRECIO, NOMBRE, DESCRIPCION, IMAGEN)
+VALUES ('PCK03','Sportage', 'Kia', 1998, '2.0', 60000, 'Kia 1', 'Vehiculo de segunda, con 500 mil millas.', '/bd/ksportage.jpg');
+
+INSERT INTO TBL_VEHICULOS(PLACA, MODELO, MARCA, ANIO, MOTOR, PRECIO, NOMBRE, DESCRIPCION, IMAGEN)
+VALUES ('PHD04','Montero', 'Mitsubishi', 1999, '3.0', 90000, 'Mit 1', 'Vehiculo de segunda, poco uso con 1000 mil millas.', '/bd/mit.jpg');
+
+
