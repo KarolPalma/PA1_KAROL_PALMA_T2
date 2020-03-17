@@ -9,12 +9,12 @@ package hn.uth.pa1.parcial2.app;
  *
  * @author karol
  */
-public class Frm_Vehiculos extends javax.swing.JFrame {
+public class Frm_VerInfo extends javax.swing.JFrame {
 
     /**
-     * Creates new form Frm_Vehiculos
+     * Creates new form Frm_VerInfo
      */
-    public Frm_Vehiculos() {
+    public Frm_VerInfo() {
         initComponents();
     }
 
@@ -60,20 +60,20 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frm_Vehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_VerInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frm_Vehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_VerInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frm_Vehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_VerInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frm_Vehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_VerInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frm_Vehiculos().setVisible(true);
+                new Frm_VerInfo().setVisible(true);
             }
         });
     }
