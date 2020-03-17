@@ -5,12 +5,12 @@
  */
 package hn.uth.pa1.parcial2.app;
 
-import static hn.uth.pa1.parcial2.app.Frm_Vehiculos1.lblTextPlaca1;
-import static hn.uth.pa1.parcial2.app.Frm_Vehiculos1.lblTextPlaca2;
-import static hn.uth.pa1.parcial2.app.Frm_Vehiculos1.lblTextPlaca3;
 import hn.uth.pa1.parcial2.app.objetos.Vehiculo;
 import hn.uth.pa1.parcial2.app.repositorio.VehiculoRepo;
 import java.awt.Image;
+import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -18,14 +18,55 @@ import javax.swing.JOptionPane;
  *
  * @author karol
  */
-public class Frm_Vehiculos2 extends javax.swing.JFrame {
+public class Frm_Vehiculos extends javax.swing.JFrame {
 
     /**
-     * Creates new form Frm_Vehiculos2
+     * Creates new form Frm_Vehiculos
      */
-    public Frm_Vehiculos2() {
+    
+    int num = 1;
+    
+    public int formulario(int num){
+        if (num == 1 ){
+            p1 = "PDP01";
+            p2 = "PHD02";
+            p3 = "PDZ90";
+            conteo = 3;
+            lblContInicial.setText(String.valueOf(conteo));
+            btnAnterior.setVisible(false);
+        }else{
+            if(num == 2){
+                p1 = "PCK03";
+                p2 = "PHD04";
+                p3 = "PSH05"; 
+                conteo = 6;
+                lblContInicial.setText(String.valueOf(conteo));
+                btnSiguiente.setVisible(false);
+            }else{
+                System.out.println("Error de Formulario");
+            }
+        }
+        
+        return num;
+    }
+    String p1 = " ";
+    String p2 = " ";
+    String p3 = " ";
+    int conteo = 1;
+    int opcion = 0;
+        
+    public Frm_Vehiculos() {
         initComponents();
-        info();
+        formulario(num);
+        System.out.println("Formulrio "+num+" opcion "+opcion);
+        info(num);
+    }
+    
+        public Frm_Vehiculos(int num, int conteo) {
+        initComponents();
+        formulario(num);
+        System.out.println("Formulrio "+num+" opcion "+opcion);
+        info(num);
     }
 
     /**
@@ -37,22 +78,6 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblMotor1 = new javax.swing.JLabel();
-        lblTextPrecio1 = new javax.swing.JLabel();
-        lblTextMotor3 = new javax.swing.JLabel();
-        lblTextNombre3 = new javax.swing.JLabel();
-        lblTextMarca3 = new javax.swing.JLabel();
-        btnVer3 = new javax.swing.JButton();
-        txtFiltrarAnio = new javax.swing.JTextField();
-        btnVer1 = new javax.swing.JButton();
-        lblPrecio2 = new javax.swing.JLabel();
-        lblTextNombre2 = new javax.swing.JLabel();
-        lblTextMarca2 = new javax.swing.JLabel();
-        lblTextModelo2 = new javax.swing.JLabel();
-        lblTextAnio2 = new javax.swing.JLabel();
-        lblTextMotor2 = new javax.swing.JLabel();
-        lblTextPlaca2 = new javax.swing.JLabel();
-        lblNombre2 = new javax.swing.JLabel();
         lblModelo3 = new javax.swing.JLabel();
         lblAnio3 = new javax.swing.JLabel();
         lblMarca3 = new javax.swing.JLabel();
@@ -65,7 +90,7 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
         btnBuscar1 = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
         lblPlaca1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblContFinal = new javax.swing.JLabel();
         lblPrecio1 = new javax.swing.JLabel();
         lblImagen2 = new javax.swing.JLabel();
         lblFiltroAño1 = new javax.swing.JLabel();
@@ -74,6 +99,25 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
         lblTextMarca1 = new javax.swing.JLabel();
         lblTextModelo1 = new javax.swing.JLabel();
         lblTextAnio1 = new javax.swing.JLabel();
+        lblTextMotor1 = new javax.swing.JLabel();
+        lblTextPlaca1 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        lblImagen1 = new javax.swing.JLabel();
+        lblNombre1 = new javax.swing.JLabel();
+        lblMarca1 = new javax.swing.JLabel();
+        lblAnio1 = new javax.swing.JLabel();
+        lblModelo1 = new javax.swing.JLabel();
+        lblMotor1 = new javax.swing.JLabel();
+        lblTextPrecio1 = new javax.swing.JLabel();
+        btnVer1 = new javax.swing.JButton();
+        lblPrecio2 = new javax.swing.JLabel();
+        lblTextNombre2 = new javax.swing.JLabel();
+        lblTextMarca2 = new javax.swing.JLabel();
+        lblTextModelo2 = new javax.swing.JLabel();
+        lblTextAnio2 = new javax.swing.JLabel();
+        lblTextMotor2 = new javax.swing.JLabel();
+        lblTextPlaca2 = new javax.swing.JLabel();
+        lblNombre2 = new javax.swing.JLabel();
         lblMarca2 = new javax.swing.JLabel();
         lblAnio2 = new javax.swing.JLabel();
         lblModelo2 = new javax.swing.JLabel();
@@ -81,73 +125,17 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
         lblTextPrecio2 = new javax.swing.JLabel();
         lblPlaca2 = new javax.swing.JLabel();
         btnVer2 = new javax.swing.JButton();
-        lblTextMotor1 = new javax.swing.JLabel();
         lblTextPrecio3 = new javax.swing.JLabel();
-        lblTextPlaca1 = new javax.swing.JLabel();
         lblPlaca3 = new javax.swing.JLabel();
-        lblTitulo = new javax.swing.JLabel();
         lblTextModelo3 = new javax.swing.JLabel();
-        lblImagen1 = new javax.swing.JLabel();
-        lblNombre1 = new javax.swing.JLabel();
-        lblMarca1 = new javax.swing.JLabel();
-        lblAnio1 = new javax.swing.JLabel();
-        lblModelo1 = new javax.swing.JLabel();
+        lblTextMotor3 = new javax.swing.JLabel();
+        lblTextNombre3 = new javax.swing.JLabel();
+        lblTextMarca3 = new javax.swing.JLabel();
+        btnVer3 = new javax.swing.JButton();
+        txtFiltrarAnio = new javax.swing.JTextField();
+        lblContInicial = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lblMotor1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblMotor1.setText("Motor:");
-
-        lblTextPrecio1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblTextPrecio1.setText("texto precio");
-
-        lblTextMotor3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblTextMotor3.setText("texto motor");
-
-        lblTextNombre3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTextNombre3.setText("text nombre");
-
-        lblTextMarca3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblTextMarca3.setText("texto marca");
-
-        btnVer3.setText("Ver");
-        btnVer3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVer3ActionPerformed(evt);
-            }
-        });
-
-        btnVer1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnVer1.setText("Ver");
-        btnVer1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVer1ActionPerformed(evt);
-            }
-        });
-
-        lblPrecio2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblPrecio2.setText("Precio:");
-
-        lblTextNombre2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTextNombre2.setText("text nombre");
-
-        lblTextMarca2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblTextMarca2.setText("texto marca");
-
-        lblTextModelo2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblTextModelo2.setText("texto modelo");
-
-        lblTextAnio2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblTextAnio2.setText("texto año");
-
-        lblTextMotor2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblTextMotor2.setText("texto motor");
-
-        lblTextPlaca2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblTextPlaca2.setText("texto placa");
-
-        lblNombre2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblNombre2.setText("Nombre:");
 
         lblModelo3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblModelo3.setText("Modelo:");
@@ -197,8 +185,8 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
         lblPlaca1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblPlaca1.setText("Placa:");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("6 / 6");
+        lblContFinal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblContFinal.setText("/ 6");
 
         lblPrecio1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblPrecio1.setText("Precio:");
@@ -220,6 +208,67 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
 
         lblTextAnio1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTextAnio1.setText("texto año");
+
+        lblTextMotor1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTextMotor1.setText("texto motor");
+
+        lblTextPlaca1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTextPlaca1.setText("texto placa");
+
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTitulo.setText("Catálogo de Vehículos");
+
+        lblImagen1.setText("imagen1");
+
+        lblNombre1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblNombre1.setText("Nombre:");
+
+        lblMarca1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblMarca1.setText("Marca:");
+
+        lblAnio1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblAnio1.setText("Año:");
+
+        lblModelo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblModelo1.setText("Modelo:");
+
+        lblMotor1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblMotor1.setText("Motor:");
+
+        lblTextPrecio1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTextPrecio1.setText("texto precio");
+
+        btnVer1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnVer1.setText("Ver");
+        btnVer1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVer1ActionPerformed(evt);
+            }
+        });
+
+        lblPrecio2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPrecio2.setText("Precio:");
+
+        lblTextNombre2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTextNombre2.setText("text nombre");
+
+        lblTextMarca2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTextMarca2.setText("texto marca");
+
+        lblTextModelo2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTextModelo2.setText("texto modelo");
+
+        lblTextAnio2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTextAnio2.setText("texto año");
+
+        lblTextMotor2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTextMotor2.setText("texto motor");
+
+        lblTextPlaca2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTextPlaca2.setText("texto placa");
+
+        lblNombre2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblNombre2.setText("Nombre:");
 
         lblMarca2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblMarca2.setText("Marca:");
@@ -247,37 +296,33 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
             }
         });
 
-        lblTextMotor1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblTextMotor1.setText("texto motor");
-
         lblTextPrecio3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTextPrecio3.setText("texto precio");
-
-        lblTextPlaca1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblTextPlaca1.setText("texto placa");
 
         lblPlaca3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblPlaca3.setText("Placa:");
 
-        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTitulo.setText("Catálogo de Vehículos");
-
         lblTextModelo3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTextModelo3.setText("texto modelo");
 
-        lblImagen1.setText("imagen1");
+        lblTextMotor3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTextMotor3.setText("texto motor");
 
-        lblNombre1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblNombre1.setText("Nombre:");
+        lblTextNombre3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTextNombre3.setText("text nombre");
 
-        lblMarca1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblMarca1.setText("Marca:");
+        lblTextMarca3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTextMarca3.setText("texto marca");
 
-        lblAnio1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblAnio1.setText("Año:");
+        btnVer3.setText("Ver");
+        btnVer3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVer3ActionPerformed(evt);
+            }
+        });
 
-        lblModelo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblModelo1.setText("Modelo:");
+        lblContInicial.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblContInicial.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -288,8 +333,10 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(285, 285, 285)
                         .addComponent(btnAnterior)
-                        .addGap(104, 104, 104)
-                        .addComponent(jLabel1)
+                        .addGap(80, 80, 80)
+                        .addComponent(lblContInicial)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblContFinal)
                         .addGap(83, 83, 83)
                         .addComponent(btnSiguiente))
                     .addGroup(layout.createSequentialGroup()
@@ -475,7 +522,7 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPlaca2)
                             .addComponent(lblTextPlaca2))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -512,71 +559,141 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
                     .addComponent(lblImagen3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblContFinal)
                     .addComponent(btnAnterior)
-                    .addComponent(btnSiguiente))
+                    .addComponent(btnSiguiente)
+                    .addComponent(lblContInicial))
                 .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVer3ActionPerformed
-        /*
-        try {
-            cambiarPlaca.setEnviarPlaca("PDZ90");
-            abrirFormulario();
-        } catch (Exception ex) {
-            Logger.getLogger(Frm_Vehiculos1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
-    }//GEN-LAST:event_btnVer3ActionPerformed
-
-    private void btnVer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVer1ActionPerformed
-        /*
-        try {
-            cambiarPlaca.setEnviarPlaca("PDP01");
-            abrirFormulario();
-        } catch (Exception ex) {
-            Logger.getLogger(Frm_Vehiculos1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
-    }//GEN-LAST:event_btnVer1ActionPerformed
-
     private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
-        CambiarPagina();
+        RegresarPagina();
     }//GEN-LAST:event_btnAnteriorActionPerformed
 
     private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
-        // TODO add your handling code here:
+        VehiculoRepo vr=new VehiculoRepo();
+        String Anio = txtFiltrarAnio.getText();
+        try {
+            Object valorBuscado = vr.buscar(Anio);
+            if (valorBuscado == null) {
+                JOptionPane.showMessageDialog(this,"No existe ningun vehiculo de ese año");
+            }else{
+                System.out.println(valorBuscado);
+            
+                JOptionPane.showMessageDialog(this,"Exito");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,e.toString());
+        }
     }//GEN-LAST:event_btnBuscar1ActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        JOptionPane.showMessageDialog(this,"Estas en el final de página");
+        CambiarPagina();
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
+    private void btnVer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVer1ActionPerformed
+        if(num == 1){
+            System.out.println("boton op 1"+opcion);
+            opcion = 1;
+            try {
+                abrirVerInfo(opcion);
+            } catch (Exception ex) {
+                Logger.getLogger(Frm_Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            System.out.println("boton op 2"+opcion);
+            if(num == 2){
+                opcion = 4;
+                try {
+                    abrirVerInfo(opcion);
+                } catch (Exception ex) {
+                    Logger.getLogger(Frm_Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_btnVer1ActionPerformed
+
     private void btnVer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVer2ActionPerformed
+
         /*
         try {
             cambiarPlaca.setEnviarPlaca("PHD02");
             System.out.println(""+cambiarPlaca.getEnviarPlaca());
         } catch (Exception ex) {
-            Logger.getLogger(Frm_Vehiculos1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Frm_Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
         }
         */
     }//GEN-LAST:event_btnVer2ActionPerformed
 
-    public void CambiarPagina(){
-        Frm_Vehiculos1 abrirOtroFormulario = new Frm_Vehiculos1();
+    private void btnVer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVer3ActionPerformed
+
+        /*
+        try {
+            cambiarPlaca.setEnviarPlaca("PDZ90");
+            abrirFormulario();
+        } catch (Exception ex) {
+            Logger.getLogger(Frm_Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
+    }//GEN-LAST:event_btnVer3ActionPerformed
+
+    
+    public void RegresarPagina(){
+        num = 1;
+        int n = num;
+        formulario(n);
+        info(n);
+        Frm_Vehiculos abrirOtroFormulario = new Frm_Vehiculos(num, conteo);
         abrirOtroFormulario.setDefaultCloseOperation(HIDE_ON_CLOSE);
         abrirOtroFormulario.setVisible(true);
         this.setVisible(false);
     }
     
-    public void info(){
+    public void CambiarPagina(){
+        num = num+1;
+        int n = num;
+        formulario(n);
+        info(n);
+        Frm_Vehiculos abrirOtroFormulario = new Frm_Vehiculos(num, conteo);
+        abrirOtroFormulario.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        abrirOtroFormulario.setVisible(true);
+        this.setVisible(false);
+    }
+    
+    //"PHD04"; "PSH05"; 
+    
+    public void abrirVerInfo(int opcion) throws Exception{
+        System.out.println("Opciones "+opcion);
+        String p = " ";
+        switch(opcion){
+            case 1:
+                p = "PDP01";
+                break;
+            case 2:
+                p = "PHD02";
+                break;
+            case 3:
+                p = "PDZ90";
+                break;
+            case 4:
+                p = "PCK03";
+                break;
+        }
+        VehiculoRepo vr = new VehiculoRepo();
+        Vehiculo valorBuscado = vr.seleccionar(p);
+        Frm_VerInfo abrirVerInfo = new Frm_VerInfo(valorBuscado);
+        abrirVerInfo.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        abrirVerInfo.setVisible(true);
+        this.setVisible(false);
+    }
+    // PDP01, PHD02, PDZ90
+    public void info(int num){
         VehiculoRepo vr = new VehiculoRepo();
         try {
-            Vehiculo valorBuscado = vr.seleccionar("PCK03");
+            Vehiculo valorBuscado = vr.seleccionar(p1);
             lblTextNombre1.setText(String.valueOf(valorBuscado.getNombre()));
             lblTextMarca1.setText(String.valueOf(valorBuscado.getMarca()));
             lblTextModelo1.setText(String.valueOf(valorBuscado.getModelo()));
@@ -587,10 +704,9 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
             String imagen1 = valorBuscado.getImagen();
             ImageIcon carro1 = new ImageIcon(getClass().getResource(imagen1));
             ImageIcon icono1 = new ImageIcon(carro1.getImage().getScaledInstance(lblImagen1.getWidth(), lblImagen1.getHeight(), Image.SCALE_DEFAULT) );
-            //System.out.println(""+icono1);
             lblImagen1.setIcon(icono1);
             
-            Vehiculo valorBuscado2 = vr.seleccionar("PHD04");
+            Vehiculo valorBuscado2 = vr.seleccionar(p2);
             lblTextNombre2.setText(String.valueOf(valorBuscado2.getNombre()));
             lblTextMarca2.setText(String.valueOf(valorBuscado2.getMarca()));
             lblTextModelo2.setText(String.valueOf(valorBuscado2.getModelo()));
@@ -601,10 +717,9 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
             String imagen2 = valorBuscado2.getImagen();
             ImageIcon carro2 = new ImageIcon(getClass().getResource(imagen2));
             ImageIcon icono2 = new ImageIcon(carro2.getImage().getScaledInstance(lblImagen2.getWidth(), lblImagen2.getHeight(), Image.SCALE_DEFAULT) );
-            //System.out.println(""+icono2);
             lblImagen2.setIcon(icono2);
             
-            Vehiculo valorBuscado3 = vr.seleccionar("PSH05");
+            Vehiculo valorBuscado3 = vr.seleccionar(p3);
             lblTextNombre3.setText(String.valueOf(valorBuscado3.getNombre()));
             lblTextMarca3.setText(String.valueOf(valorBuscado3.getMarca()));
             lblTextModelo3.setText(String.valueOf(valorBuscado3.getModelo()));
@@ -615,7 +730,6 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
             String imagen3 = valorBuscado3.getImagen();
             ImageIcon carro3 = new ImageIcon(getClass().getResource(imagen3));
             ImageIcon icono3 = new ImageIcon(carro3.getImage().getScaledInstance(lblImagen3.getWidth(), lblImagen3.getHeight(), Image.SCALE_DEFAULT) );
-            //System.out.println(""+icono3);
             lblImagen3.setIcon(icono3);
 
         } catch (Exception e) {
@@ -623,6 +737,9 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
         }
     }
     
+    
+    
+     
     /**
      * @param args the command line arguments
      */
@@ -640,23 +757,28 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frm_Vehiculos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_Vehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frm_Vehiculos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_Vehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frm_Vehiculos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_Vehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frm_Vehiculos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_Vehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frm_Vehiculos2().setVisible(true);
+                new Frm_Vehiculos().setVisible(true);
             }
         });
+        
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnterior;
@@ -665,10 +787,11 @@ public class Frm_Vehiculos2 extends javax.swing.JFrame {
     private javax.swing.JButton btnVer1;
     private javax.swing.JButton btnVer2;
     private javax.swing.JButton btnVer3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAnio1;
     private javax.swing.JLabel lblAnio2;
     private javax.swing.JLabel lblAnio3;
+    private javax.swing.JLabel lblContFinal;
+    private javax.swing.JLabel lblContInicial;
     private javax.swing.JLabel lblFiltroAño1;
     private javax.swing.JLabel lblImagen1;
     private javax.swing.JLabel lblImagen2;

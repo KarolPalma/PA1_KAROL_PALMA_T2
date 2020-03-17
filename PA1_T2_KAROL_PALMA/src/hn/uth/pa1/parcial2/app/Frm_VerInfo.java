@@ -5,6 +5,10 @@
  */
 package hn.uth.pa1.parcial2.app;
 
+import hn.uth.pa1.parcial2.app.objetos.Vehiculo;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author karol
@@ -14,9 +18,6 @@ public class Frm_VerInfo extends javax.swing.JFrame {
     /**
      * Creates new form Frm_VerInfo
      */
-    public Frm_VerInfo() {
-        initComponents();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +28,225 @@ public class Frm_VerInfo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblPrecio = new javax.swing.JLabel();
+        lblDescripcion = new javax.swing.JLabel();
+        lblValorActual = new javax.swing.JLabel();
+        lblTxtMarca = new javax.swing.JLabel();
+        lblTxtModelo = new javax.swing.JLabel();
+        lblTxtAnio = new javax.swing.JLabel();
+        lblTxtMotor = new javax.swing.JLabel();
+        lblTxtPlaca = new javax.swing.JLabel();
+        lblTxtPrecio = new javax.swing.JLabel();
+        lblTxtDescripcion1 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        lblImagen = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblMarca = new javax.swing.JLabel();
+        lblModelo = new javax.swing.JLabel();
+        lblAnio = new javax.swing.JLabel();
+        lblMotor = new javax.swing.JLabel();
+        lblPlaca = new javax.swing.JLabel();
+        lblLPS = new javax.swing.JLabel();
+        lblPrecioActual = new javax.swing.JLabel();
+        lblAnioVehiculo = new javax.swing.JLabel();
+        lblNumAnio = new javax.swing.JLabel();
+        lblAnioVehiculo1 = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
+        lblTxtDescripcion2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblPrecio.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblPrecio.setText("Precio:");
+
+        lblDescripcion.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblDescripcion.setText("Descripción:");
+
+        lblValorActual.setText("Valor Actual:");
+
+        lblTxtMarca.setText("texto_Marca");
+
+        lblTxtModelo.setText("texto_Modelo");
+
+        lblTxtAnio.setText("texto_año");
+
+        lblTxtMotor.setText("texto_motor");
+
+        lblTxtPlaca.setText("texto_placa");
+
+        lblTxtPrecio.setText("texto_precio");
+
+        lblTxtDescripcion1.setText("texto_descripcion");
+        lblTxtDescripcion1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblTxtDescripcion1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblTxtDescripcion1.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
+
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitulo.setText("Vista del Vehiculo:");
+
+        lblImagen.setText("Imagen");
+
+        lblNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNombre.setText("txtNombre");
+
+        lblMarca.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblMarca.setText("Marca:");
+
+        lblModelo.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblModelo.setText("Modelo:");
+
+        lblAnio.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblAnio.setText("Año:");
+
+        lblMotor.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblMotor.setText("Motor:");
+
+        lblPlaca.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblPlaca.setText("Placa:");
+
+        lblLPS.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblLPS.setText("LPS.");
+
+        lblPrecioActual.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblPrecioActual.setText("0.00");
+
+        lblAnioVehiculo.setText("El Vehiculo tiene ");
+
+        lblNumAnio.setText("0");
+
+        lblAnioVehiculo1.setText("año/s");
+
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitulo)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblPrecio)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblTxtPrecio))
+                                    .addComponent(lblDescripcion)
+                                    .addComponent(lblNombre)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblMarca)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblTxtMarca))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblModelo)
+                                            .addComponent(lblAnio))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblTxtAnio)
+                                            .addComponent(lblTxtModelo)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lblMotor)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(lblTxtMotor))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lblPlaca)
+                                            .addGap(24, 24, 24)
+                                            .addComponent(lblTxtPlaca)
+                                            .addGap(3, 3, 3)))
+                                    .addComponent(lblTxtDescripcion1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(lblTxtDescripcion2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(lblValorActual)
+                        .addGap(26, 26, 26)
+                        .addComponent(lblLPS)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPrecioActual)
+                        .addGap(62, 62, 62)
+                        .addComponent(lblAnioVehiculo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblNumAnio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblAnioVehiculo1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(btnRegresar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(lblTitulo)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNombre)
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblMarca)
+                            .addComponent(lblTxtMarca))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblModelo)
+                            .addComponent(lblTxtModelo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAnio)
+                            .addComponent(lblTxtAnio))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblMotor)
+                            .addComponent(lblTxtMotor))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPlaca)
+                            .addComponent(lblTxtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPrecio)
+                            .addComponent(lblTxtPrecio))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblDescripcion)
+                        .addGap(5, 5, 5)
+                        .addComponent(lblTxtDescripcion1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTxtDescripcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblValorActual)
+                    .addComponent(lblLPS)
+                    .addComponent(lblPrecioActual)
+                    .addComponent(lblAnioVehiculo)
+                    .addComponent(lblNumAnio)
+                    .addComponent(lblAnioVehiculo1))
+                .addGap(18, 18, 18)
+                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        Frm_Vehiculos abrirVerVehiculos = new Frm_Vehiculos();
+        abrirVerVehiculos.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        abrirVerVehiculos.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,7 +282,59 @@ public class Frm_VerInfo extends javax.swing.JFrame {
             }
         });
     }
+    
+    public Frm_VerInfo() {
+        initComponents();
+    }
+    public Frm_VerInfo(Vehiculo vehiculo) {
+        initComponents();
+        System.out.println(""+vehiculo);
+        lblNombre.setText(vehiculo.getNombre());
+        lblTxtMarca.setText(vehiculo.getMarca());
+        lblTxtModelo.setText(vehiculo.getModelo());
+        lblTxtPrecio.setText(String.valueOf(vehiculo.getPrecio()));
+        lblTxtAnio.setText(String.valueOf(vehiculo.getAnio()));
+        lblTxtMotor.setText(vehiculo.getMotor());
+        lblTxtPlaca.setText(vehiculo.getPlaca());
+        //IMAGEN
+        String imagen1 = vehiculo.getImagen();
+        ImageIcon carro1 = new ImageIcon(getClass().getResource(imagen1));
+        ImageIcon icono1 = new ImageIcon(carro1.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_DEFAULT) );
+        lblImagen.setIcon(icono1);
+        //Descripción
+        String descripcion = vehiculo.getDescripcion();
+        String[] parte = descripcion.split(",");
+        String part1 = parte[0];
+        String part2 = parte[1];
+        lblTxtDescripcion1.setText(part1);
+        lblTxtDescripcion2.setText(part2);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegresar;
+    private javax.swing.JLabel lblAnio;
+    private javax.swing.JLabel lblAnioVehiculo;
+    private javax.swing.JLabel lblAnioVehiculo1;
+    private javax.swing.JLabel lblDescripcion;
+    public static javax.swing.JLabel lblImagen;
+    private javax.swing.JLabel lblLPS;
+    private javax.swing.JLabel lblMarca;
+    private javax.swing.JLabel lblModelo;
+    private javax.swing.JLabel lblMotor;
+    public static javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNumAnio;
+    private javax.swing.JLabel lblPlaca;
+    private javax.swing.JLabel lblPrecio;
+    private javax.swing.JLabel lblPrecioActual;
+    private javax.swing.JLabel lblTitulo;
+    public static javax.swing.JLabel lblTxtAnio;
+    public static javax.swing.JLabel lblTxtDescripcion1;
+    public static javax.swing.JLabel lblTxtDescripcion2;
+    public static javax.swing.JLabel lblTxtMarca;
+    public static javax.swing.JLabel lblTxtModelo;
+    public static javax.swing.JLabel lblTxtMotor;
+    public static javax.swing.JLabel lblTxtPlaca;
+    public static javax.swing.JLabel lblTxtPrecio;
+    private javax.swing.JLabel lblValorActual;
     // End of variables declaration//GEN-END:variables
 }
