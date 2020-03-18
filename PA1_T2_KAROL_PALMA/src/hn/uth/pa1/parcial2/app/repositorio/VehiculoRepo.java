@@ -85,7 +85,7 @@ public class VehiculoRepo implements Repositorio {
             //Traer la conexion o la session
             Connection cnx = getConnection();
 
-            String sql = "select * from TBL_VEHICULOS where  Placa = '"+anioV+"' ";
+            String sql = "select * from TBL_VEHICULOS where Anio =" + anioV;
 
             Statement st = cnx.createStatement();
 

@@ -5,6 +5,7 @@
  */
 package hn.uth.pa1.parcial2.app.objetos;
 
+import hn.uth.pa1.parcial2.app.Frm_Vehiculos;
 import hn.uth.pa1.parcial2.app.repositorio.VehiculoRepo;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
  * @author karol
  */
 public class VehiculoController {
+    
    public static Object [][] convertirLista(List<Vehiculo> lista){
         int tamanioLista=lista.size();
         
@@ -32,4 +34,28 @@ public class VehiculoController {
         }
         return tablaRetorno;
     }
+   
+   public static void label1True(){
+       Frm_Vehiculos.Panel1.setVisible(true);
+   }
+   
+   public static void label2True(){
+       Frm_Vehiculos.Panel2.setVisible(true);
+   }
+   
+   public static void label3True(){
+       Frm_Vehiculos.Panel3.setVisible(true);
+   }
+   
+   public static void label1False(){
+       Frm_Vehiculos.Panel1.setVisible(false);
+   }
+   
+   public static void label2False(){
+       Frm_Vehiculos.Panel2.setVisible(false);
+   }
+   
+   public static void label3False(){
+       Frm_Vehiculos.Panel3.setVisible(true);
+   }
 }
