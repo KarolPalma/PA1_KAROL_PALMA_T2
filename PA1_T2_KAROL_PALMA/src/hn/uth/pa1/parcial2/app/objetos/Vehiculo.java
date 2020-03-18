@@ -19,7 +19,7 @@ public class Vehiculo {
     private String nombre;
     private String descripcion;
     private String imagen;
-    private String EnviarPlaca;
+    private int calculoAnio;
     
     public Vehiculo() {
 
@@ -38,7 +38,7 @@ public class Vehiculo {
     }
     
     public Vehiculo(Vehiculo otro){
-        this.EnviarPlaca = otro.EnviarPlaca;
+        this.calculoAnio = otro.calculoAnio;
     }
 
     public String getPlaca() {
@@ -113,11 +113,11 @@ public class Vehiculo {
         this.imagen = imagen;
     }
 
-    public String getEnviarPlaca() {
-        return EnviarPlaca;
+    public int getcalculoAnio() {
+        return calculoAnio;
     }
 
-    public void setEnviarPlaca(String EnviarPlaca) {
-        this.EnviarPlaca = EnviarPlaca;
+    public void setcalculoAnio(int calculoAnio) {
+        this.calculoAnio = calculoAnio;
     }
 }

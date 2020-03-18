@@ -5,10 +5,22 @@
  */
 package hn.uth.pa1.parcial2.app;
 
+import static hn.uth.pa1.parcial2.app.Frm_VerInfo.lblImagen;
+import static hn.uth.pa1.parcial2.app.Frm_VerInfo.lblNombre;
+import static hn.uth.pa1.parcial2.app.Frm_VerInfo.lblTxtAnio;
+import static hn.uth.pa1.parcial2.app.Frm_VerInfo.lblTxtDescripcion1;
+import static hn.uth.pa1.parcial2.app.Frm_VerInfo.lblTxtDescripcion2;
+import static hn.uth.pa1.parcial2.app.Frm_VerInfo.lblTxtMarca;
+import static hn.uth.pa1.parcial2.app.Frm_VerInfo.lblTxtModelo;
+import static hn.uth.pa1.parcial2.app.Frm_VerInfo.lblTxtMotor;
+import static hn.uth.pa1.parcial2.app.Frm_VerInfo.lblTxtPlaca;
+import static hn.uth.pa1.parcial2.app.Frm_VerInfo.lblTxtPrecio;
 import hn.uth.pa1.parcial2.app.objetos.Vehiculo;
 import hn.uth.pa1.parcial2.app.repositorio.VehiculoRepo;
 import java.awt.Image;
 import java.sql.Connection;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -24,49 +36,47 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
      * Creates new form Frm_Vehiculos
      */
     
-    int num = 1;
+    int numFormulario = 1;
     
-    public int formulario(int num){
-        if (num == 1 ){
+    public int formulario(int numFormulario){
+        if (numFormulario == 1 ){
             p1 = "PDP01";
             p2 = "PHD02";
             p3 = "PDZ90";
-            conteo = 3;
-            lblContInicial.setText(String.valueOf(conteo));
+            conteoPag = 3;
+            lblContInicial.setText(String.valueOf(conteoPag));
             btnAnterior.setVisible(false);
         }else{
-            if(num == 2){
+            if(numFormulario == 2){
                 p1 = "PCK03";
                 p2 = "PHD04";
                 p3 = "PSH05"; 
-                conteo = 6;
-                lblContInicial.setText(String.valueOf(conteo));
+                conteoPag = 6;
+                lblContInicial.setText(String.valueOf(conteoPag));
                 btnSiguiente.setVisible(false);
             }else{
                 System.out.println("Error de Formulario");
             }
-        }
-        
-        return num;
+        }  
+        return numFormulario;
     }
+    
     String p1 = " ";
     String p2 = " ";
     String p3 = " ";
-    int conteo = 1;
+    int conteoPag = 1;
     int opcion = 0;
         
     public Frm_Vehiculos() {
         initComponents();
-        formulario(num);
-        System.out.println("Formulrio "+num+" opcion "+opcion);
-        info(num);
+        formulario(numFormulario);
+        info(numFormulario);
     }
     
-        public Frm_Vehiculos(int num, int conteo) {
+        public Frm_Vehiculos(int numFormulario, int conteo, int opcion) {
         initComponents();
-        formulario(num);
-        System.out.println("Formulrio "+num+" opcion "+opcion);
-        info(num);
+        formulario(numFormulario);
+        info(numFormulario);
     }
 
     /**
@@ -331,15 +341,6 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(285, 285, 285)
-                        .addComponent(btnAnterior)
-                        .addGap(80, 80, 80)
-                        .addComponent(lblContInicial)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblContFinal)
-                        .addGap(83, 83, 83)
-                        .addComponent(btnSiguiente))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTitulo)
@@ -360,36 +361,6 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
                                 .addGap(181, 181, 181)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(226, 226, 226)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(lblPlaca2)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(lblTextPlaca2))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(lblMotor2)
-                                                        .addComponent(lblAnio2))
-                                                    .addGap(18, 18, 18)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(lblTextAnio2)
-                                                        .addComponent(lblTextMotor2))))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(lblMotor1)
-                                                    .addComponent(lblAnio1)
-                                                    .addComponent(lblPlaca1))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(lblTextPlaca1)
-                                                    .addComponent(lblTextAnio1)
-                                                    .addComponent(lblTextMotor1))))
-                                        .addGap(62, 62, 62)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnVer1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnVer2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblNombre2)
                                             .addComponent(lblMarca2)
@@ -401,19 +372,6 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
                                             .addComponent(lblTextModelo2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lblTextPrecio2)
                                             .addComponent(lblTextMarca2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblNombre1)
-                                            .addComponent(lblMarca1)
-                                            .addComponent(lblModelo1)
-                                            .addComponent(lblPrecio1))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(lblTextNombre1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(lblTextMarca1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(lblTextModelo1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(lblTextPrecio1)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblNombre3)
@@ -443,8 +401,63 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
                                                         .addComponent(lblTextAnio3)))
                                                 .addGap(62, 62, 62)
                                                 .addComponent(btnVer3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addComponent(lblModelo3, javax.swing.GroupLayout.Alignment.LEADING))))))
-                .addContainerGap(61, Short.MAX_VALUE))
+                                    .addComponent(lblModelo3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(226, 226, 226)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addComponent(lblPlaca2)
+                                                            .addGap(18, 18, 18)
+                                                            .addComponent(lblTextPlaca2))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(lblMotor2)
+                                                                .addComponent(lblAnio2))
+                                                            .addGap(18, 18, 18)
+                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(lblTextAnio2)
+                                                                .addComponent(lblTextMotor2))))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(lblMotor1)
+                                                            .addComponent(lblAnio1)
+                                                            .addComponent(lblPlaca1))
+                                                        .addGap(18, 18, 18)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(lblTextPlaca1)
+                                                            .addComponent(lblTextAnio1)
+                                                            .addComponent(lblTextMotor1)))))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(lblNombre1)
+                                                    .addComponent(lblMarca1)
+                                                    .addComponent(lblModelo1)
+                                                    .addComponent(lblPrecio1))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(lblTextNombre1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(lblTextMarca1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(lblTextModelo1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(lblTextPrecio1))))
+                                        .addGap(62, 62, 62)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnVer2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnVer1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(35, 35, 35))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(285, 285, 285)
+                        .addComponent(btnAnterior)
+                        .addGap(80, 80, 80)
+                        .addComponent(lblContInicial)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblContFinal)
+                        .addGap(83, 83, 83)
+                        .addComponent(btnSiguiente)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -570,7 +583,12 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
-        RegresarPagina();
+        numFormulario = 1;
+        try {
+            AnteriorPagina(numFormulario, opcion);
+        } catch (Exception ex) {
+            Logger.getLogger(Frm_Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnAnteriorActionPerformed
 
     private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
@@ -591,104 +609,204 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscar1ActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        CambiarPagina();
+        numFormulario = 2;
+        try {
+            SiguientePagina(numFormulario, opcion);
+        } catch (Exception ex) {
+            Logger.getLogger(Frm_Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnSiguienteActionPerformed
-
+// PDP01, PHD02, PDZ90, PCK03, PHD04, PSH05
     private void btnVer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVer1ActionPerformed
-        if(num == 1){
-            System.out.println("boton op 1"+opcion);
-            opcion = 1;
+
+        VehiculoRepo vr=new VehiculoRepo();
+        if(btnAnterior.isVisible() == false){
             try {
-                abrirVerInfo(opcion);
-            } catch (Exception ex) {
-                Logger.getLogger(Frm_Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+            Frm_VerInfo abrirInfo = new Frm_VerInfo();
+            abrirInfo.setVisible(true);
+            this.setVisible(false);
+            Vehiculo valorBuscado = (Vehiculo) vr.buscar("PDP01");
+            infoDetalles(valorBuscado);
+            System.out.println(valorBuscado);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this,e.toString());
             }
-        }else{
-            System.out.println("boton op 2"+opcion);
-            if(num == 2){
-                opcion = 4;
-                try {
-                    abrirVerInfo(opcion);
-                } catch (Exception ex) {
-                    Logger.getLogger(Frm_Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        }if(btnAnterior.isVisible() == true){
+            try {
+                Frm_VerInfo abrirInfo = new Frm_VerInfo();
+                abrirInfo.setVisible(true);
+                this.setVisible(false);
+                Vehiculo valorBuscado = (Vehiculo) vr.buscar("PCK03");
+                infoDetalles(valorBuscado);
+                System.out.println(valorBuscado);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this,e.toString());
             }
         }
+            
     }//GEN-LAST:event_btnVer1ActionPerformed
 
     private void btnVer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVer2ActionPerformed
+        VehiculoRepo vr=new VehiculoRepo();
+        if(btnAnterior.isVisible() == false){
+            try {
+            Frm_VerInfo abrirInfo = new Frm_VerInfo();
+            abrirInfo.setVisible(true);
+            this.setVisible(false);
+            Vehiculo valorBuscado = (Vehiculo) vr.buscar("PHD02");
+            infoDetalles(valorBuscado);
+            System.out.println(valorBuscado);
 
-        /*
-        try {
-            cambiarPlaca.setEnviarPlaca("PHD02");
-            System.out.println(""+cambiarPlaca.getEnviarPlaca());
-        } catch (Exception ex) {
-            Logger.getLogger(Frm_Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this,e.toString());
+            }
+        }if(btnAnterior.isVisible() == true){
+            try {
+                Frm_VerInfo abrirInfo = new Frm_VerInfo();
+                abrirInfo.setVisible(true);
+                this.setVisible(false);
+                Vehiculo valorBuscado = (Vehiculo) vr.buscar("PHD04");
+                infoDetalles(valorBuscado);
+                System.out.println(valorBuscado);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this,e.toString());
+            }
         }
-        */
     }//GEN-LAST:event_btnVer2ActionPerformed
 
     private void btnVer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVer3ActionPerformed
+        VehiculoRepo vr=new VehiculoRepo();
+        if(btnAnterior.isVisible() == false){
+            try {
+            Frm_VerInfo abrirInfo = new Frm_VerInfo();
+            abrirInfo.setVisible(true);
+            this.setVisible(false);
+            Vehiculo valorBuscado = (Vehiculo) vr.buscar("PDZ90");
+            infoDetalles(valorBuscado);
+            System.out.println(valorBuscado);
 
-        /*
-        try {
-            cambiarPlaca.setEnviarPlaca("PDZ90");
-            abrirFormulario();
-        } catch (Exception ex) {
-            Logger.getLogger(Frm_Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this,e.toString());
+            }
+        }if(btnAnterior.isVisible() == true){
+            try {
+                Frm_VerInfo abrirInfo = new Frm_VerInfo();
+                abrirInfo.setVisible(true);
+                this.setVisible(false);
+                Vehiculo valorBuscado = (Vehiculo) vr.buscar("PSH05");
+                infoDetalles(valorBuscado);
+                System.out.println(valorBuscado);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this,e.toString());
+            }
         }
-        */
     }//GEN-LAST:event_btnVer3ActionPerformed
 
-    
-    public void RegresarPagina(){
-        num = 1;
-        int n = num;
-        formulario(n);
-        info(n);
-        Frm_Vehiculos abrirOtroFormulario = new Frm_Vehiculos(num, conteo);
-        abrirOtroFormulario.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        abrirOtroFormulario.setVisible(true);
-        this.setVisible(false);
+    public void AnteriorPagina(int opcionFormulario, int opVehiculo) throws Exception{
+        Frm_Vehiculos abrirOtroFormulario = new Frm_Vehiculos(numFormulario, conteoPag, opcion);
+        int n = 1;
+        if(btnAnterior.isVisible() == false){
+            btnSiguiente.setVisible(true);
+            btnAnterior.setVisible(false);
+            formulario(n);
+            info(n);
+            abrirOtroFormulario.setDefaultCloseOperation(HIDE_ON_CLOSE);
+            abrirOtroFormulario.setVisible(true);
+            this.setVisible(false);
+            if (opcion == 1 || opcion == 2 || opcion == 3){
+                String p = " ";
+                switch(opVehiculo){
+                    case 1:
+                        p = "PDP01";
+                    break;
+                    case 2:
+                        p = "PHD02";
+                    break;
+                    case 3:
+                        p = "PDZ90";
+                    break;
+                }
+                VehiculoRepo vr = new VehiculoRepo();
+                Vehiculo valorBuscado = vr.seleccionar(p);
+                Frm_VerInfo abrirVerInfo = new Frm_VerInfo(valorBuscado);
+                abrirVerInfo.setDefaultCloseOperation(HIDE_ON_CLOSE);
+                abrirVerInfo.setVisible(true);
+            }
+        }
     }
     
-    public void CambiarPagina(){
-        num = num+1;
-        int n = num;
-        formulario(n);
-        info(n);
-        Frm_Vehiculos abrirOtroFormulario = new Frm_Vehiculos(num, conteo);
-        abrirOtroFormulario.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        abrirOtroFormulario.setVisible(true);
-        this.setVisible(false);
+    public void SiguientePagina(int opcionFormulario, int opVehiculo) throws Exception{
+        Frm_Vehiculos abrirOtroFormulario = new Frm_Vehiculos(numFormulario, conteoPag, opcion);
+        int n = 2;
+        if(btnSiguiente.isVisible() == false){
+            btnSiguiente.setVisible(false);
+            btnAnterior.setVisible(true);
+            formulario(n);
+            info(n);
+            abrirOtroFormulario.setDefaultCloseOperation(HIDE_ON_CLOSE);
+            abrirOtroFormulario.setVisible(true);
+            this.setVisible(false);
+            if (opcion == 1 || opcion == 2 || opcion == 3){
+            String p = " ";
+            switch(opVehiculo){
+                case 1:
+                    p = "PCK03";
+                break;
+                case 2:
+                    p = "PHD04";
+                break;
+                case 3:
+                    p = "PSH05";
+                break;
+                }
+                VehiculoRepo vr = new VehiculoRepo();
+                Vehiculo valorBuscado = vr.seleccionar(p);
+                Frm_VerInfo abrirVerInfo = new Frm_VerInfo(valorBuscado);
+                abrirVerInfo.setDefaultCloseOperation(HIDE_ON_CLOSE);
+                abrirVerInfo.setVisible(true);
+            }
+        }
+    }
+    
+    public void CambiarPagina(int opcionFormulario, int opVehiculo) throws Exception{
+        Frm_Vehiculos abrirOtroFormulario = new Frm_Vehiculos(numFormulario, conteoPag, opcion);
+        int n = 2;
+        if(btnAnterior.isVisible() == false){
+            numFormulario++;
+
+            formulario(n);
+            info(n);
+            System.out.println("Entra en el # 1");
+            System.out.println("Cambiar Pag "+numFormulario + " opcion "+opcion);
+            abrirOtroFormulario.setVisible(true);
+            this.setVisible(false);
+            System.out.println("Cambiar Pag "+numFormulario + " opcion "+opcion);
+            if (opcion == 1 || opcion == 2 || opcion == 3){
+                String p = " ";
+                switch(opVehiculo){
+                    case 1:
+                        p = "PDP01";
+                    break;
+                    case 2:
+                        p = "PHD02";
+                    break;
+                    case 3:
+                        p = "PDZ90";
+                    break;
+                }
+                VehiculoRepo vr = new VehiculoRepo();
+                Vehiculo valorBuscado = vr.seleccionar(p);
+                Frm_VerInfo abrirVerInfo = new Frm_VerInfo(valorBuscado);
+                abrirVerInfo.setDefaultCloseOperation(HIDE_ON_CLOSE);
+                abrirVerInfo.setVisible(true);
+                this.setVisible(false);
+                }
+        }   
     }
     
     //"PHD04"; "PSH05"; 
     
-    public void abrirVerInfo(int opcion) throws Exception{
-        System.out.println("Opciones "+opcion);
-        String p = " ";
-        switch(opcion){
-            case 1:
-                p = "PDP01";
-                break;
-            case 2:
-                p = "PHD02";
-                break;
-            case 3:
-                p = "PDZ90";
-                break;
-            case 4:
-                p = "PCK03";
-                break;
-        }
-        VehiculoRepo vr = new VehiculoRepo();
-        Vehiculo valorBuscado = vr.seleccionar(p);
-        Frm_VerInfo abrirVerInfo = new Frm_VerInfo(valorBuscado);
-        abrirVerInfo.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        abrirVerInfo.setVisible(true);
-        this.setVisible(false);
-    }
     // PDP01, PHD02, PDZ90
     public void info(int num){
         VehiculoRepo vr = new VehiculoRepo();
@@ -737,7 +855,35 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
         }
     }
     
-    
+    public void infoDetalles(Vehiculo vehiculo){
+        lblNombre.setText(vehiculo.getNombre());
+        lblTxtMarca.setText(vehiculo.getMarca());
+        lblTxtModelo.setText(vehiculo.getModelo());
+        lblTxtPrecio.setText(String.valueOf(vehiculo.getPrecio()));
+        lblTxtAnio.setText(String.valueOf(vehiculo.getAnio()));
+        lblTxtMotor.setText(vehiculo.getMotor());
+        lblTxtPlaca.setText(vehiculo.getPlaca());
+        double precio = Frm_VerInfo.calcularPrecio(vehiculo.getPrecio(), vehiculo.getAnio());
+        Frm_VerInfo.lblPrecioActual.setText(String.valueOf("" + precio));
+        if((LocalDate.now().getYear() - vehiculo.getAnio()) == 1){
+            Frm_VerInfo.lblNumAnio.setText("1");
+        }else {
+            
+            Frm_VerInfo.lblNumAnio.setText("" + (LocalDate.now().getYear() - vehiculo.getAnio()));
+        }
+        //IMAGEN
+        String imagen1 = vehiculo.getImagen();
+        ImageIcon carro1 = new ImageIcon(getClass().getResource(imagen1));
+        ImageIcon icono1 = new ImageIcon(carro1.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_DEFAULT) );
+        lblImagen.setIcon(icono1);
+        //Descripción
+        String descripcion = vehiculo.getDescripcion();
+        String[] parte = descripcion.split(",");
+        String part1 = parte[0];
+        String part2 = parte[1];
+        lblTxtDescripcion1.setText(part1);
+        lblTxtDescripcion2.setText(part2);
+    }
     
      
     /**
@@ -781,9 +927,9 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAnterior;
+    public static javax.swing.JButton btnAnterior;
     private javax.swing.JButton btnBuscar1;
-    private javax.swing.JButton btnSiguiente;
+    public static javax.swing.JButton btnSiguiente;
     private javax.swing.JButton btnVer1;
     private javax.swing.JButton btnVer2;
     private javax.swing.JButton btnVer3;

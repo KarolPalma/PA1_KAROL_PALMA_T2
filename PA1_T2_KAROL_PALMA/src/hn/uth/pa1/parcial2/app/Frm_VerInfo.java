@@ -7,6 +7,7 @@ package hn.uth.pa1.parcial2.app;
 
 import hn.uth.pa1.parcial2.app.objetos.Vehiculo;
 import java.awt.Image;
+import java.time.LocalDate;
 import javax.swing.ImageIcon;
 
 /**
@@ -53,6 +54,11 @@ public class Frm_VerInfo extends javax.swing.JFrame {
         lblAnioVehiculo1 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         lblTxtDescripcion2 = new javax.swing.JLabel();
+        lblNota = new javax.swing.JLabel();
+        lblNota1 = new javax.swing.JLabel();
+        lblNota2 = new javax.swing.JLabel();
+        lblNota3 = new javax.swing.JLabel();
+        lblNota4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,6 +129,16 @@ public class Frm_VerInfo extends javax.swing.JFrame {
             }
         });
 
+        lblNota.setText("Nota:");
+
+        lblNota1.setText(" El Calculo del valor actual es proporcional al año del vehiculo");
+
+        lblNota2.setText("Mayor de 1 año es el 5% del precio");
+
+        lblNota3.setText("Mayor de 5 años es un 10% del precio");
+
+        lblNota4.setText("Mayor del 10 años es un 30% del precio");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,21 +184,32 @@ public class Frm_VerInfo extends javax.swing.JFrame {
                                     .addComponent(lblTxtDescripcion1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                                     .addComponent(lblTxtDescripcion2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(lblValorActual)
-                        .addGap(26, 26, 26)
-                        .addComponent(lblLPS)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPrecioActual)
-                        .addGap(62, 62, 62)
-                        .addComponent(lblAnioVehiculo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblNumAnio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblAnioVehiculo1))
+                        .addGap(87, 87, 87)
+                        .addComponent(btnRegresar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(btnRegresar)))
+                        .addGap(57, 57, 57)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblValorActual)
+                                .addGap(26, 26, 26))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblNota)
+                                .addGap(25, 25, 25)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblLPS)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblPrecioActual)
+                                .addGap(62, 62, 62)
+                                .addComponent(lblAnioVehiculo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblNumAnio)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblAnioVehiculo1))
+                            .addComponent(lblNota1)
+                            .addComponent(lblNota2)
+                            .addComponent(lblNota3)
+                            .addComponent(lblNota4))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -233,9 +260,19 @@ public class Frm_VerInfo extends javax.swing.JFrame {
                     .addComponent(lblAnioVehiculo)
                     .addComponent(lblNumAnio)
                     .addComponent(lblAnioVehiculo1))
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNota)
+                    .addComponent(lblNota1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNota2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNota3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNota4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -283,6 +320,25 @@ public class Frm_VerInfo extends javax.swing.JFrame {
         });
     }
     
+    public static double calcularPrecio(double precio, int anio){
+        if(anio <= (LocalDate.now().getYear() - 10)){
+            double descuento = precio * 0.3;
+            return precio - descuento;
+        }else{
+            if(anio <= (LocalDate.now().getYear() - 5)){
+                double descuento = precio * 0.1;
+                return precio - descuento;
+            }else{
+                if(anio <= (LocalDate.now().getYear() - 1)){
+                    double descuento = precio * 0.05;
+                    return precio - descuento;
+                }else{
+                    return precio;
+                }
+            }
+        }
+    }
+    
     public Frm_VerInfo() {
         initComponents();
     }
@@ -296,6 +352,14 @@ public class Frm_VerInfo extends javax.swing.JFrame {
         lblTxtAnio.setText(String.valueOf(vehiculo.getAnio()));
         lblTxtMotor.setText(vehiculo.getMotor());
         lblTxtPlaca.setText(vehiculo.getPlaca());
+        double precio = calcularPrecio(vehiculo.getPrecio(), vehiculo.getAnio());
+        lblPrecioActual.setText(String.valueOf("" + precio));
+        if((LocalDate.now().getYear() - vehiculo.getAnio()) == 1){
+            lblNumAnio.setText("1");
+        }else {
+            
+            lblNumAnio.setText("" + (LocalDate.now().getYear() - vehiculo.getAnio()));
+        }
         //IMAGEN
         String imagen1 = vehiculo.getImagen();
         ImageIcon carro1 = new ImageIcon(getClass().getResource(imagen1));
@@ -309,6 +373,7 @@ public class Frm_VerInfo extends javax.swing.JFrame {
         lblTxtDescripcion1.setText(part1);
         lblTxtDescripcion2.setText(part2);
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
@@ -322,10 +387,15 @@ public class Frm_VerInfo extends javax.swing.JFrame {
     private javax.swing.JLabel lblModelo;
     private javax.swing.JLabel lblMotor;
     public static javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblNumAnio;
+    private javax.swing.JLabel lblNota;
+    private javax.swing.JLabel lblNota1;
+    private javax.swing.JLabel lblNota2;
+    private javax.swing.JLabel lblNota3;
+    private javax.swing.JLabel lblNota4;
+    public static javax.swing.JLabel lblNumAnio;
     private javax.swing.JLabel lblPlaca;
     private javax.swing.JLabel lblPrecio;
-    private javax.swing.JLabel lblPrecioActual;
+    public static javax.swing.JLabel lblPrecioActual;
     private javax.swing.JLabel lblTitulo;
     public static javax.swing.JLabel lblTxtAnio;
     public static javax.swing.JLabel lblTxtDescripcion1;
