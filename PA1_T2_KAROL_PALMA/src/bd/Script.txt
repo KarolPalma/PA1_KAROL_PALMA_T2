@@ -4,7 +4,7 @@ INSERT INTO TBL_VEHICULOS(PLACA, MODELO, MARCA, ANIO, MOTOR, PRECIO, NOMBRE, DES
 VALUES ('PDP01','BMW01', 'BMW', 2018, '2.0', 200000, 'FAST 1', 'Vehiculo comprado en agencia, poco uso con 90 mil millas.', '/bd/bmw.jpg');
 
 INSERT INTO TBL_VEHICULOS(PLACA, MODELO, MARCA, ANIO, MOTOR, PRECIO, NOMBRE, DESCRIPCION, IMAGEN)
-VALUES ('PHD02','Tacoma', 'Toyota', 2014, '2.0', 400000, 'Toy 1', 'Vehiculo de segunda, con 400 mil millas.', '/bd/toy.jpg');
+VALUES ('PHD02','Tacoma', 'Toyota', 2014, '2.0', 400000, 'Toy 1', 'Vehiculo de segunda, con 400 mil millas.', '/bd/toyota.jpg');
 
 INSERT INTO TBL_VEHICULOS(PLACA, MODELO, MARCA, ANIO, MOTOR, PRECIO, NOMBRE, DESCRIPCION, IMAGEN)
 VALUES ('PDZ90','Sorento', 'Kia', 2012, '2.0', 300000, 'Sor 1', 'Vehiculo comprado en agencia, poco uso con 20 mil millas.', '/bd/ksorento.jpg');
@@ -15,4 +15,5 @@ VALUES ('PCK03','Sportage', 'Kia', 1998, '2.0', 60000, 'Kia 1', 'Vehiculo de seg
 INSERT INTO TBL_VEHICULOS(PLACA, MODELO, MARCA, ANIO, MOTOR, PRECIO, NOMBRE, DESCRIPCION, IMAGEN)
 VALUES ('PHD04','Montero', 'Mitsubishi', 1999, '3.0', 90000, 'Mit 1', 'Vehiculo de segunda, poco uso con 1000 mil millas.', '/bd/mit.jpg');
 
-
+INSERT INTO TBL_VEHICULOS(PLACA, MODELO, MARCA, ANIO, MOTOR, PRECIO, NOMBRE, DESCRIPCION, IMAGEN)
+VALUES ('PSH05','CX-3', 'Mazda', 2018, '1.8', 450000, 'Maz 1', 'Vehiculo comprado en agencia, auto nuevo.', '/bd/mazda.jpg');

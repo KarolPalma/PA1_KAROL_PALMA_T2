@@ -158,7 +158,7 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
         lblTextPlaca3 = new javax.swing.JLabel();
         lblNombre3 = new javax.swing.JLabel();
         txtFiltrarAnio = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -607,10 +607,10 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
                             .addComponent(lblPrecio3)))))
         );
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
 
@@ -626,7 +626,7 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtFiltrarAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnBuscar)
                 .addGap(36, 36, 36))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -655,7 +655,7 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
                     .addComponent(lblTitulo)
                     .addComponent(lblFiltroAño1)
                     .addComponent(txtFiltrarAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnBuscar))
                 .addGap(31, 31, 31)
                 .addComponent(Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -774,7 +774,7 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnVer3ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         VehiculoRepo vr=new VehiculoRepo();
         int FilAnio = Integer.parseInt(txtFiltrarAnio.getText());
         if(txtFiltrarAnio.getText().isEmpty() || txtFiltrarAnio.getText().equalsIgnoreCase("") || txtFiltrarAnio.getText().equalsIgnoreCase(" ")){
@@ -785,15 +785,10 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
             
             List<Vehiculo> listaRetorna = vr.buscarTodo();
             //for (Vehiculo valorTemporal : listaRetorna) {
-
                 if(valorBuscado.getAnio() == FilAnio){
-
                    System.out.println(valorBuscado);
-                    System.out.println("Si hay Vehiculos del Año "+FilAnio);
-                    JOptionPane.showMessageDialog(this,"Si vehiculos del año "+FilAnio);
-                    //FiltrarVehiculos.add(valorTemporal);
-                    System.out.println("Aver "+FiltrarVehiculos.get(0));
-                    
+                   System.out.println("Si hay Vehiculos del Año "+FilAnio);
+                   JOptionPane.showMessageDialog(this,"Si hay vehiculos del año "+FilAnio);
                 }else{
                     System.out.println("No hay vehiculos del año "+FilAnio);
                     JOptionPane.showMessageDialog(this,"No hay vehiculos del año "+FilAnio);
@@ -805,7 +800,7 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"No hay vehiculos del año "+FilAnio);
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     public List<Vehiculo> comprobarListadoDatosSiguiente(List<Vehiculo> vehiculos){
                 int tamanioLista;
@@ -1118,6 +1113,7 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
     public static javax.swing.JPanel Panel2;
     public static javax.swing.JPanel Panel3;
     public static javax.swing.JButton btnAnterior;
+    private javax.swing.JButton btnBuscar;
     public static javax.swing.JButton btnSiguiente;
     private javax.swing.JButton btnVer1;
     private javax.swing.JButton btnVer2;
@@ -1125,7 +1121,6 @@ public class Frm_Vehiculos extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
